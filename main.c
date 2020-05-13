@@ -1,44 +1,49 @@
 #include "monty.h"
+global_t global_var = {NULL, NULL, NULL};
 
+/**
+ * main - Monty byte code interpreter
+ * @ac: argument count
+ * @av: argument arr
+ * Return: 0 on success, 1 on Error
+ **/
 int main(int ac, char *av[])
 {
-	FILE *fd;
-	char *buffer = NULL;
 	size_t state_buffer;
 	int flag_EOF = 1;
-	char **words = NULL;
 	int count_words = 0;
 	stack_t *head = NULL;
 	int count_lines = 0;
 
 	if (ac != 2)
 	{
-		write(STDERR_FILENO, "USAGE: monty file\n", 18);
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	fd = fopen(av[1], "r");
-	if (!fd)
+	global_var.fd = fopen(av[1], "r");
+	if (!global_var.fd)
 	{
-		write(STDERR_FILENO, "Error: Can't open file ", 18);
-		write(STDERR_FILENO, av[1], strlen(av[1]));
-		write(STDERR_FILENO, "\n", strlen(av[1]));
+		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
 		exit(EXIT_FAILURE);
 	}
 	while (1)
 	{
-		flag_EOF = getline(&buffer, &state_buffer, fd);
+		flag_EOF = getline(&global_var.buffer, &state_buffer, global_var.fd);
 		if (flag_EOF == -1)
 			break;
-		count_words = countwords(buffer);
-		words = split_line(buffer, count_words);
+		count_words = countwords(global_var.buffer);
 		count_lines++;
-		if (words[1] == NULL)
-			get_func(words[0], &head, "0", count_lines);
+		global_var.words = split_line(global_var.buffer, count_words);
+		if (global_var.words[0] != NULL)
+		{
+			get_func(&head, count_lines);
+			free_loop(global_var.words);
+		}
 		else
-			get_func(words[0], &head, words[1], count_lines);
-		free_loop(words);
+			free(global_var.words);
 	}
-	free(buffer);
-	fclose(fd);
+	free(global_var.buffer);
+	free_stack(head);
+	fclose(global_var.fd);
 	return (0);
 }
