@@ -8,6 +8,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <string.h>
+#include <ctype.h>
 #define TOK_DELIM " \t\r\n\v\a"
 
 /**
@@ -50,5 +51,6 @@ void print_arr(char **arr);
 void free_loop(char **arr);
 void error_malloc();
 stack_t *add_node_end(stack_t **head, const int n);
+void free_stack(stack_t *head);
 
 #endif

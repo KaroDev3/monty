@@ -10,6 +10,7 @@ int main(int ac, char *av[])
 	int count_words = 0;
 	stack_t *head = NULL;
 	int count_lines = 0;
+	int i, flag = 0;
 
 	if (ac != 2)
 	{
@@ -30,8 +31,37 @@ int main(int ac, char *av[])
 		if (flag_EOF == -1)
 			break;
 		count_words = countwords(buffer);
-		words = split_line(buffer, count_words);
 		count_lines++;
+		words = split_line(buffer, count_words);
+		if (words[0] == NULL)
+		{
+			free(words);
+			continue;
+		}
+
+		flag = 0;
+		if (strcmp("push", words[0]) == 0)
+		{
+			if (words[1] == NULL)
+				flag = 1;
+			for (i = 0; flag != 1 && words[1][i] != '\0'; i++)
+			{
+				if (isdigit(words[1][i]) == 0)
+					flag = 1;
+			}
+
+			if (flag == 1)
+			{
+				write(STDERR_FILENO, "L", 1);
+				print_number(count_lines);
+				write(STDERR_FILENO, ": usage: push integer \n", 23);
+				free(buffer);
+				free_loop(words);
+				free_stack(head);
+				fclose(fd);
+				exit(EXIT_FAILURE);
+			}
+		}
 		if (words[1] == NULL)
 			get_func(words[0], &head, "0", count_lines);
 		else
@@ -39,6 +69,7 @@ int main(int ac, char *av[])
 		free_loop(words);
 	}
 	free(buffer);
+	free_stack(head);
 	fclose(fd);
 	return (0);
 }

@@ -8,11 +8,11 @@
 int get_func(char *s, stack_t **stack, char *n, int count_line)
 {
 	instruction_t monty_functions[] = {
-	    {"push", f_push},
-	    {"pall", f_pall},
-	    {NULL, NULL}};
-
+		{"push", f_push},
+		{"pall", f_pall},
+		{NULL, NULL}};
 	int i = 0;
+
 	while (monty_functions[i].opcode != NULL)
 	{
 		if (strcmp(monty_functions[i].opcode, s) == 0)
