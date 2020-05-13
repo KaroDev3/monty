@@ -54,13 +54,24 @@ int main(int ac, char *av[])
 			{
 				write(STDERR_FILENO, "L", 1);
 				print_number(count_lines);
-				write(STDERR_FILENO, ": usage: push integer \n", 23);
+				write(STDERR_FILENO, ": usage: push integer\n", 22);
 				free(buffer);
 				free_loop(words);
 				free_stack(head);
 				fclose(fd);
 				exit(EXIT_FAILURE);
 			}
+		}
+		if (head == NULL)
+		{
+			write(STDERR_FILENO, "L", 1);
+			print_number(count_lines);
+			write(STDERR_FILENO, ": can't pint, stack empty\n", 26);
+			free(buffer);
+			free_loop(words);
+			free_stack(head);
+			fclose(fd);
+			exit(EXIT_FAILURE);
 		}
 		err_inst = 0;
 		if (words[1] == NULL)

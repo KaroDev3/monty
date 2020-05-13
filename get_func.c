@@ -10,6 +10,7 @@ int get_func(char *s, stack_t **stack, char *n)
 	instruction_t monty_functions[] = {
 	    {"push", f_push},
 	    {"pall", f_pall},
+	    {"pint", f_pint},
 	    {NULL, NULL}};
 	int i = 0;
 
