@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * f_div - divides the second top element of 
+ * f_div - divides the second top element of
  * the stack by the top element of the stack
  * from the second top element of the stack.
  * @stack: head of linked list (stack)

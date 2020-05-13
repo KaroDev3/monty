@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * f_sub - subtracts the top element of the stack 
+ * f_sub - subtracts the top element of the stack
  * from the second top element of the stack.
  * @stack: head of linked list (stack)
  * @line_number: counter lines
