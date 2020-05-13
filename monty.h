@@ -73,6 +73,7 @@ void f_mul(stack_t **stack, unsigned int line_number);
 void f_mod(stack_t **stack, unsigned int line_number);
 void f_pchar(stack_t **stack, unsigned int line_number);
 void f_pstr(stack_t **stack, unsigned int line_number);
+void f_rotl(stack_t **stack, unsigned int line_number);
 void print_number(size_t n);
 void print_arr(char **arr);
 void free_loop(char **arr);

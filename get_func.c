@@ -22,6 +22,7 @@ void get_func(stack_t **stack, unsigned int line_number)
 	    {"pchar", f_pchar},
 	    {"pchar", f_pchar},
 	    {"pstr", f_pstr},
+	    {"rotl", f_rotl},
 	    {NULL, NULL}};
 	int i = 0;
 

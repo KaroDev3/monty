@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * f_pchar - prints the char at the top of the stack, 
+ * f_pchar - prints the char at the top of the stack,
  * followed by a new line.
  * @stack: head of linked list (stack)
  * @line_number: counter lines
@@ -20,7 +20,7 @@ void f_pchar(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	if (0 <= temp->n && temp->n <= 127)
+	if (temp->n >= 0 && temp->n <= 127)
 	{
 		while (temp->next != NULL)
 			temp = temp->next;
