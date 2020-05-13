@@ -2,6 +2,8 @@
 
 /**
  * error_malloc - print error in stderr
+ *@stack: head of linked list (stack)
+ * 
  */
 void error_malloc(stack_t **stack)
 {

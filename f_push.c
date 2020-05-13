@@ -18,9 +18,13 @@ void f_push(stack_t **stack, unsigned int line_number)
 		fclose(global_var.fd);
 		exit(EXIT_FAILURE);
 	}
+
 	for (i = 0; global_var.words[1][i] != '\0'; i++)
 	{
-		if (isdigit(global_var.words[1][i]) == 0)
+		if (global_var.words[1][0] == '-' && i == 0)
+		{
+		}
+		else if (isdigit(global_var.words[1][i]) == 0)
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", line_number);
 			free(global_var.buffer);
