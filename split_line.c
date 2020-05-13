@@ -4,6 +4,7 @@
 *to each string from the command line
 *@line: buffer that stores the stdin input
 *@len: len of words to create
+*@stack: head of linked list (stack)
 *Return: double pointer array of pointers that are commands to interpret
 *and execute
 */
