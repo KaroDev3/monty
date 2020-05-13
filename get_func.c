@@ -8,10 +8,11 @@
 int get_func(char *s, stack_t **stack, char *n)
 {
 	instruction_t monty_functions[] = {
-	    {"push", f_push},
-	    {"pall", f_pall},
-	    {"pint", f_pint},
-	    {NULL, NULL}};
+		{"push", f_push},
+		{"pall", f_pall},
+		{"pint", f_pint},
+		{"pop", f_pop},
+		{NULL, NULL}};
 	int i = 0;
 
 	while (monty_functions[i].opcode != NULL)

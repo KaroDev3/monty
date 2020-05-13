@@ -47,6 +47,7 @@ int get_func(char *s, stack_t **stack, char *n);
 void f_push(stack_t **stack, unsigned int n);
 void f_pall(stack_t **stack, unsigned int n);
 void f_pint(stack_t **stack, unsigned int n);
+void f_pop(stack_t **stack, unsigned int n);
 void print_number(size_t n);
 void print_arr(char **arr);
 void free_loop(char **arr);

@@ -62,7 +62,8 @@ int main(int ac, char *av[])
 				exit(EXIT_FAILURE);
 			}
 		}
-		if (head == NULL)
+		
+		if (head == NULL && strcmp("pint", words[0]) == 0)
 		{
 			write(STDERR_FILENO, "L", 1);
 			print_number(count_lines);
@@ -73,6 +74,19 @@ int main(int ac, char *av[])
 			fclose(fd);
 			exit(EXIT_FAILURE);
 		}
+
+				if (head == NULL && strcmp("pop", words[0]) == 0)
+		{
+			write(STDERR_FILENO, "L", 1);
+			print_number(count_lines);
+			write(STDERR_FILENO, ": can't pop, stack empty\n", 26);
+			free(buffer);
+			free_loop(words);
+			free_stack(head);
+			fclose(fd);
+			exit(EXIT_FAILURE);
+		}
+		
 		err_inst = 0;
 		if (words[1] == NULL)
 			err_inst = get_func(words[0], &head, "0");
