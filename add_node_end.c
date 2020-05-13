@@ -21,7 +21,14 @@ stack_t *add_node_end(stack_t **head, const int n)
 	}
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
-		return (NULL);
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		free(global_var.buffer);
+		free_loop(global_var.words);
+		free_stack(*head);
+		fclose(global_var.fd);
+		exit(EXIT_FAILURE);
+	}
 	new_node->n = n;
 	new_node->prev = position;
 	new_node->next = NULL;
