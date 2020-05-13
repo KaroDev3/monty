@@ -24,6 +24,7 @@ typedef struct global
 	char **words;
 	char *buffer;
 	FILE *fd;
+	int is_stack;
 } global_t;
 
 extern global_t global_var;
@@ -75,11 +76,14 @@ void f_pchar(stack_t **stack, unsigned int line_number);
 void f_pstr(stack_t **stack, unsigned int line_number);
 void f_rotl(stack_t **stack, unsigned int line_number);
 void f_rotr(stack_t **stack, unsigned int line_number);
+void f_stack(stack_t **stack, unsigned int line_number);
 void print_number(size_t n);
 void print_arr(char **arr);
 void free_loop(char **arr);
 void error_malloc(stack_t **stack);
 stack_t *add_node_end(stack_t **head, const int n);
+stack_t *add_node_head(stack_t **head, const int n);
 void free_stack(stack_t *head);
+instruction_t definition(int i);
 
 #endif

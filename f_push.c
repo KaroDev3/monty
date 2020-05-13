@@ -34,6 +34,8 @@ void f_push(stack_t **stack, unsigned int line_number)
 			exit(EXIT_FAILURE);
 		}
 	}
-
-	add_node_end(stack, atoi(global_var.words[1]));
+	if (global_var.is_stack == 1)
+		add_node_end(stack, atoi(global_var.words[1]));
+	else
+		add_node_head(stack, atoi(global_var.words[1]));
 }

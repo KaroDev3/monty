@@ -1,5 +1,5 @@
 #include "monty.h"
-global_t global_var = {NULL, NULL, NULL};
+global_t global_var = {NULL, NULL, NULL, 1};
 
 /**
  * main - Monty byte code interpreter
