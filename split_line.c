@@ -3,6 +3,7 @@
 *split_line - creates a double pointer array that holders pointers
 *to each string from the command line
 *@line: buffer that stores the stdin input
+*@len: len of words to create
 *Return: double pointer array of pointers that are commands to interpret
 *and execute
 */

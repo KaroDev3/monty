@@ -1,9 +1,15 @@
 #include "monty.h"
 
-void f_pall(stack_t **stack, unsigned int n)
+/**
+ * f_pall - prints all the values on the stack,
+ * starting from the top of the stack.
+ * @stack: head of linked list (stack)
+ * @line_number: counter lines
+ */
+void f_pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = *stack;
-	(void)n;
+	(void)line_number;
 
 	if (stack == NULL || *stack == NULL)
 		return;

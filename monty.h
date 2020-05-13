@@ -11,6 +11,15 @@
 #include <ctype.h>
 #define TOK_DELIM " \t\r\n\v\a"
 
+typedef struct global
+{
+	char **words;
+	char *buffer;
+	FILE *fd;
+} global_t;
+
+extern global_t global_var;
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -43,11 +52,12 @@ typedef struct instruction_s
 
 size_t countwords(char *in);
 char **split_line(char *line, size_t len);
-int get_func(char *s, stack_t **stack, char *n);
+void get_func(stack_t **stack, unsigned int line_number);
 void f_push(stack_t **stack, unsigned int n);
 void f_pall(stack_t **stack, unsigned int n);
 void f_pint(stack_t **stack, unsigned int n);
 void f_pop(stack_t **stack, unsigned int n);
+void f_swap(stack_t **stack, unsigned int n);
 void print_number(size_t n);
 void print_arr(char **arr);
 void free_loop(char **arr);

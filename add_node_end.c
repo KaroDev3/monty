@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * add_dnodeint_end - adds a new node at the end of a stack_t list.
+ * add_node_end - adds a new node at the end of a stack_t list.
  * @head: head of the list.
  * @n: value to store.
  * Return: the address of the new element, or NULL if it failed.
