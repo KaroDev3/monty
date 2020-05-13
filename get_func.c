@@ -8,19 +8,21 @@
 void get_func(stack_t **stack, unsigned int line_number)
 {
 	instruction_t monty_functions[] = {
-		{"push", f_push},
-		{"pall", f_pall},
-		{"pint", f_pint},
-		{"pop", f_pop},
-		{"pop", f_pop},
-		{"swap", f_swap},
-		{"add", f_add},
-		{"sub", f_sub},
-		{"div", f_div},
-		{"mul", f_mul},
-		{"mod", f_mod},
-		{"pchar", f_pchar},
-		{NULL, NULL}};
+	    {"push", f_push},
+	    {"pall", f_pall},
+	    {"pint", f_pint},
+	    {"pop", f_pop},
+	    {"pop", f_pop},
+	    {"swap", f_swap},
+	    {"add", f_add},
+	    {"sub", f_sub},
+	    {"div", f_div},
+	    {"mul", f_mul},
+	    {"mod", f_mod},
+	    {"pchar", f_pchar},
+	    {"pchar", f_pchar},
+	    {"pstr", f_pstr},
+	    {NULL, NULL}};
 	int i = 0;
 
 	if (strcmp(global_var.words[0], "nop") == 0)
@@ -37,7 +39,7 @@ void get_func(stack_t **stack, unsigned int line_number)
 	}
 
 	fprintf(stderr, "L%d: unknown instruction %s\n",
-			line_number, global_var.words[0]);
+		line_number, global_var.words[0]);
 	free(global_var.buffer);
 	free_stack(*stack);
 	fclose(global_var.fd);

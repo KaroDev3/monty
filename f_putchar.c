@@ -20,7 +20,7 @@ void f_pchar(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	if (32 <= temp->n && temp->n <= 126)
+	if (0 <= temp->n && temp->n <= 127)
 	{
 		while (temp->next != NULL)
 			temp = temp->next;
