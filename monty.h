@@ -11,6 +11,14 @@
 #include <ctype.h>
 #define TOK_DELIM " \t\r\n\v\a"
 
+/**
+ * struct global - store neccesary variables
+ * @words: array with the words of the instruction
+ * @buffer: current line processed
+ * @fd: file to process
+ *
+ * Description: store neccesary variables
+ */
 typedef struct global
 {
 	char **words;
@@ -61,7 +69,7 @@ void f_swap(stack_t **stack, unsigned int n);
 void print_number(size_t n);
 void print_arr(char **arr);
 void free_loop(char **arr);
-void error_malloc();
+void error_malloc(void);
 stack_t *add_node_end(stack_t **head, const int n);
 void free_stack(stack_t *head);
 
