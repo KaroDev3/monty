@@ -15,6 +15,7 @@ void get_func(stack_t **stack, unsigned int line_number)
 		{"pop", f_pop},
 		{"swap", f_swap},
 		{"add", f_add},
+		{"sub", f_sub},
 		{NULL, NULL}};
 	int i = 0;
 
