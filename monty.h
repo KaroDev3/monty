@@ -43,7 +43,7 @@ typedef struct instruction_s
 
 size_t countwords(char *in);
 char **split_line(char *line, size_t len);
-int get_func(char *s, stack_t **stack, char *n, int count_line);
+int get_func(char *s, stack_t **stack, char *n);
 void f_push(stack_t **stack, unsigned int n);
 void f_pall(stack_t **stack, unsigned int n);
 void print_number(size_t n);

@@ -10,7 +10,7 @@ int main(int ac, char *av[])
 	int count_words = 0;
 	stack_t *head = NULL;
 	int count_lines = 0;
-	int i, flag = 0;
+	int i, flag = 0, err_inst;
 
 	if (ac != 2)
 	{
@@ -62,10 +62,24 @@ int main(int ac, char *av[])
 				exit(EXIT_FAILURE);
 			}
 		}
+		err_inst = 0;
 		if (words[1] == NULL)
-			get_func(words[0], &head, "0", count_lines);
+			err_inst = get_func(words[0], &head, "0");
 		else
-			get_func(words[0], &head, words[1], count_lines);
+			err_inst = get_func(words[0], &head, words[1]);
+		if (err_inst)
+		{
+			write(STDERR_FILENO, "L", 1);
+			print_number(count_lines);
+			write(STDERR_FILENO, ": unknown instruction ", 22);
+			write(STDERR_FILENO, words[0], strlen(words[0]));
+			write(STDERR_FILENO, "\n", 1);
+			free(buffer);
+			free_stack(head);
+			fclose(fd);
+			free_loop(words);
+			exit(EXIT_FAILURE);
+		}
 		free_loop(words);
 	}
 	free(buffer);
