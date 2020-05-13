@@ -20,7 +20,10 @@ void get_func(stack_t **stack, unsigned int line_number)
 	while (monty_functions[i].opcode != NULL)
 	{
 		if (strcmp(monty_functions[i].opcode, global_var.words[0]) == 0)
+		{
 			monty_functions[i].f(stack, line_number);
+			return;
+		}
 		i++;
 	}
 
