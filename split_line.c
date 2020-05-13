@@ -7,7 +7,7 @@
 *Return: double pointer array of pointers that are commands to interpret
 *and execute
 */
-char **split_line(char *line, size_t len)
+char **split_line(char *line, size_t len, stack_t **stack)
 {
 	int j = 0;
 	char *token;
@@ -16,7 +16,8 @@ char **split_line(char *line, size_t len)
 
 	word_arr = malloc(sizeof(char *) * (len + 1));
 	if (word_arr == NULL)
-		return (NULL);
+		error_malloc(stack);
+
 	token_hash = strtok(line, "#");
 	token = strtok(token_hash, TOK_DELIM);
 	while (token != NULL)
@@ -25,7 +26,7 @@ char **split_line(char *line, size_t len)
 		if (word_arr[j] == NULL)
 		{
 			free_loop(word_arr);
-			error_malloc();
+			error_malloc(stack);
 		}
 		strncpy(word_arr[j], token, strlen(token) + 1);
 		token = strtok(NULL, TOK_DELIM);

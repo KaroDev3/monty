@@ -3,8 +3,11 @@
 /**
  * error_malloc - print error in stderr
  */
-void error_malloc(void)
+void error_malloc(stack_t **stack)
 {
-	write(STDERR_FILENO, "Error: malloc failed\n", 21);
+	fprintf(stderr, "Error: malloc failed\n");
+	free(global_var.buffer);
+	free_stack(*stack);
+	fclose(global_var.fd);
 	exit(EXIT_FAILURE);
 }

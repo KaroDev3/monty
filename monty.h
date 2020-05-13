@@ -59,7 +59,7 @@ typedef struct instruction_s
 } instruction_t;
 
 size_t countwords(char *in);
-char **split_line(char *line, size_t len);
+char **split_line(char *line, size_t len, stack_t **stack);
 void get_func(stack_t **stack, unsigned int line_number);
 void f_push(stack_t **stack, unsigned int n);
 void f_pall(stack_t **stack, unsigned int n);
@@ -69,7 +69,7 @@ void f_swap(stack_t **stack, unsigned int n);
 void print_number(size_t n);
 void print_arr(char **arr);
 void free_loop(char **arr);
-void error_malloc(void);
+void error_malloc(stack_t **stack);
 stack_t *add_node_end(stack_t **head, const int n);
 void free_stack(stack_t *head);
 

@@ -33,7 +33,7 @@ int main(int ac, char *av[])
 			break;
 		count_words = countwords(global_var.buffer);
 		count_lines++;
-		global_var.words = split_line(global_var.buffer, count_words);
+		global_var.words = split_line(global_var.buffer, count_words, &head);
 		if (global_var.words[0] != NULL)
 		{
 			get_func(&head, count_lines);
