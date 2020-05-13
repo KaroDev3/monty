@@ -9,7 +9,7 @@ void get_func(stack_t **stack, unsigned int line_number)
 {
 	int i = 0;
 	int len = 18;
-	instruction_t monty_functions[len];
+	instruction_t monty_functions[18];
 
 	for (i = 0; i < len; i++)
 		monty_functions[i] = definition(i);
@@ -27,7 +27,7 @@ void get_func(stack_t **stack, unsigned int line_number)
 	}
 
 	fprintf(stderr, "L%d: unknown instruction %s\n",
-			line_number, global_var.words[0]);
+		line_number, global_var.words[0]);
 	free(global_var.buffer);
 	free_stack(*stack);
 	fclose(global_var.fd);
@@ -43,25 +43,25 @@ void get_func(stack_t **stack, unsigned int line_number)
 instruction_t definition(int i)
 {
 	instruction_t monty_functions[] = {
-		{"push", f_push},
-		{"pall", f_pall},
-		{"pint", f_pint},
-		{"pop", f_pop},
-		{"pop", f_pop},
-		{"swap", f_swap},
-		{"add", f_add},
-		{"sub", f_sub},
-		{"div", f_div},
-		{"mul", f_mul},
-		{"mod", f_mod},
-		{"pchar", f_pchar},
-		{"pchar", f_pchar},
-		{"pstr", f_pstr},
-		{"rotl", f_rotl},
-		{"rotr", f_rotr},
-		{"stack", f_stack},
-		{"queue", f_stack},
-		{NULL, NULL}};
+	    {"push", f_push},
+	    {"pall", f_pall},
+	    {"pint", f_pint},
+	    {"pop", f_pop},
+	    {"pop", f_pop},
+	    {"swap", f_swap},
+	    {"add", f_add},
+	    {"sub", f_sub},
+	    {"div", f_div},
+	    {"mul", f_mul},
+	    {"mod", f_mod},
+	    {"pchar", f_pchar},
+	    {"pchar", f_pchar},
+	    {"pstr", f_pstr},
+	    {"rotl", f_rotl},
+	    {"rotr", f_rotr},
+	    {"stack", f_stack},
+	    {"queue", f_stack},
+	    {NULL, NULL}};
 
 	return (monty_functions[i]);
 }
