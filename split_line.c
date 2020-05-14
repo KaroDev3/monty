@@ -12,15 +12,13 @@ char **split_line(char *line, size_t len, stack_t **stack)
 {
 	int j = 0;
 	char *token;
-	char *token_hash;
 	char **word_arr;
 
 	word_arr = malloc(sizeof(char *) * (len + 1));
 	if (word_arr == NULL)
 		error_malloc(stack);
 
-	token_hash = strtok(line, "#");
-	token = strtok(token_hash, TOK_DELIM);
+	token = strtok(line, TOK_DELIM);
 	while (token != NULL)
 	{
 		word_arr[j] = malloc(strlen(token) + 1);

@@ -8,13 +8,13 @@
 void get_func(stack_t **stack, unsigned int line_number)
 {
 	int i = 0;
-	int len = 18;
-	instruction_t monty_functions[18];
+	int len = 19;
+	instruction_t monty_functions[19];
 
 	for (i = 0; i < len; i++)
 		monty_functions[i] = definition(i);
 
-	if (strcmp(global_var.words[0], "nop") == 0)
+	if (strcmp(global_var.words[0], "nop") == 0 || global_var.words[0][0] == '#')
 		return;
 
 	for (i = 0; monty_functions[i].opcode != NULL; i++)
