@@ -32,6 +32,7 @@ void f_pstr(stack_t **stack, unsigned int line_number)
 		printf("%c", temp->n);
 		temp = temp->prev;
 	}
+	printf("\n");
 }
 
 /*
