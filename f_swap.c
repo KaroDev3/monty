@@ -8,7 +8,7 @@
 void f_swap(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = *stack;
-	int backup;
+	stack_t *aux = NULL;
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 	{
@@ -23,7 +23,21 @@ void f_swap(stack_t **stack, unsigned int line_number)
 	while (temp->next != NULL)
 		temp = temp->next;
 
-	backup = temp->n;
-	temp->n = temp->prev->n;
-	temp->prev->n = backup;
+	if (temp->prev->prev) /* if stack len >= 2 */
+	{
+		aux = temp->prev->prev;
+		aux->next = temp; /* set top to (previous to top) */
+	}
+	/* set (previous to top) to top */
+	temp->prev->prev = temp;
+	temp->prev->next = NULL;
+	/* set top to (previous to top) */
+	temp->next = temp->prev;
+	if (aux)
+		temp->prev = aux;
+	else
+	{
+		temp->prev = NULL;
+		*stack = temp;
+	}
 }
